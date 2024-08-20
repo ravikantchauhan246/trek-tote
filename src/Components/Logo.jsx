@@ -1,8 +1,12 @@
 import React from 'react'
 
+
 const Logo = () => {
   return (
-   <img/>
+    <>
+    <img src="src/assets/world.svg" alt="" />
+    
+    </>
   )
 }
 

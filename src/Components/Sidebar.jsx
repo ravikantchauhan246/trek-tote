@@ -1,8 +1,14 @@
 import React from 'react'
+import AddItemForm from "./AddItemForm"
+import ButtonGroup from "./ButtonGroup"
+
 
 const Sidebar = () => {
   return (
-    <div>Sidebar</div>
+    <div className='sidebar'>
+      <AddItemForm/>
+      <ButtonGroup/>
+    </div>
   )
 }
 

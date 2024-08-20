@@ -2,7 +2,9 @@ import React from 'react'
 
 const Counter = () => {
   return (
-    <div>Counter</div>
+    <>
+      <p><b>1</b>/3 items packed</p>
+    </>
   )
 }
 
