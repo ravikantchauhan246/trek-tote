@@ -10,6 +10,45 @@ function App() {
 
   const [items,setItems] = useState(initialItem);
 
+  const handleAddItem = (newItemText)=>{
+
+    const newItem = {
+      id: new Date().getTime(),
+      name: newItemText,
+      packed: false,
+    };
+
+    const newItems = [...items,newItem]
+    setItems(newItems)
+  }
+  const handleMarkAllAsComplete = ()=>{
+    const newItems = items.map((item)=>{
+      return {...item,packed:true}
+    })
+
+    setItems(newItems)
+  }
+
+  const handleMarkAllAsIncomplete = ()=>{
+    const newItems = items.map((item)=>{
+      return {...item,packed:false}
+    })
+
+    setItems(newItems)
+  }
+
+  const handleResetToInitial = ()=>{
+    setItems(initialItem)
+  }
+
+  const handleRemoveAllItems = ()=>{
+    setItems([]);
+  }
+
+  
+
+  
+  
 
 
   return <>
@@ -17,9 +56,10 @@ function App() {
     <main>
         <Header/>
         <ItemList items={items} />
-        <Sidebar setItems={setItems} />
+        <Sidebar handleAddItem={handleAddItem}   handleMarkAllAsComplete={handleMarkAllAsComplete} handleMarkAllAsIncomplete={handleMarkAllAsIncomplete} 
+         handleResetToInitial={handleResetToInitial} handleRemoveAllItems={handleRemoveAllItems} />
     </main>
-    <Footer/>
+    <Footer/> 
   </>;
 }
 
