@@ -1,28 +1,32 @@
 import React, { useState } from "react";
 import { initialItem } from "../lib/Constants";
 
-const ItemList = ( {items}) => {
+const ItemList = ( {handleToggleItem,items,handleDeleteItem}) => {
 
   
   return (
     <>
       <ul>
        {items.map((item)=>{
-        return <Item key={item.name} item={item} />
+        return <Item key={item.id} handleToggleItem={handleToggleItem} item={item} handleDeleteItem={handleDeleteItem} />
        })}
       </ul>
     </>
   );
 };
 
-function Item({item}) {
+function Item({handleToggleItem,item,handleDeleteItem}) {
   return (
     <li className="item">
       <label>
-        <input checked={item.packed} type="checkbox" />
+        <input onChange={()=>{
+          handleToggleItem(item.id)
+        }} checked={item.packed} type="checkbox" />
         {item.name}
       </label>
-      <button>❌</button>
+      <button onClick={()=>{
+        handleDeleteItem(item.id)
+      }}>❌</button>
     </li>
   );
 }
