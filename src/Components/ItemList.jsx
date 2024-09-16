@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { initialItem } from "../lib/Constants";
 import EmptyView from "./EmptyView";
 import Select from "react-select";
@@ -7,13 +7,15 @@ const ItemList = ({ setItems,handleToggleItem, items, handleDeleteItem }) => {
 
   const [sortBy,setSortBy] = useState('default');
 
+
+
   const sortingOptions = [
     { value: "default", label: "Sort by default" },
     { value: "packed", label: 'Sort by packed' },
     { value: 'unpacked', label: 'Sort by unpacked' },
   ];
 
-  const sortedItems = [...items].sort((a,b)=>{
+  const sortedItems = useMemo(()=>[...items].sort((a,b)=>{
     if(sortBy == "packed"){
       return b.packed - a.packed;
     }
@@ -23,7 +25,7 @@ const ItemList = ({ setItems,handleToggleItem, items, handleDeleteItem }) => {
     }
 
     return;
-  });
+  }),[items,sortBy]);
 
   return (
     <>
