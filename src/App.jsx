@@ -71,7 +71,7 @@ function App() {
   return <>
     <BackgroundHeading/>
     <main>
-        <Header/>
+        <Header totalNumbersOfItems={items.length} numberOfItemsChecked={items.filter(item=>item.packed).length} />
         <ItemList handleToggleItem={handleToggleItem} handleDeleteItem={handleDeleteItem}  items={items} />
         <Sidebar handleAddItem={handleAddItem}   handleMarkAllAsComplete={handleMarkAllAsComplete} handleMarkAllAsIncomplete={handleMarkAllAsIncomplete} 
          handleResetToInitial={handleResetToInitial} handleRemoveAllItems={handleRemoveAllItems} />

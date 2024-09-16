@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Counter = () => {
+const Counter = ({totalNumbersOfItems,numberOfItemsChecked}) => {
   return (
     <>
-      <p><b>1</b>/3 items packed</p>
+      <p><b>{numberOfItemsChecked}</b>/{totalNumbersOfItems} items packed</p>
     </>
   )
 }
