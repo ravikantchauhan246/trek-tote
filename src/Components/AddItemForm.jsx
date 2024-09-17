@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, {useRef, useState } from "react";
 import Button from "./Button";
+import { useItemsContext } from "../lib/hooks";
 
-const AddItemForm = ({ handleAddItem }) => {
+const AddItemForm = () => {
+
+  const {handleAddItem} = useItemsContext()
   const [itemText, setItemText] = useState("");
 
   const inputRef = useRef();
@@ -9,13 +12,11 @@ const AddItemForm = ({ handleAddItem }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //basic validation
-
     if (!itemText) {
       alert("Item can't be empty");
       inputRef.current.focus();
       return;
     }
-
     handleAddItem(itemText);
     setItemText("");
   };

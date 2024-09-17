@@ -1,14 +1,19 @@
-import React from 'react'
-import Logo from './Logo'
-import Counter from "./Counter"
+import Logo from './Logo';
+import Counter from './Counter';
+import { useItemsContext } from '../lib/hooks';
 
-const Header = ({totalNumbersOfItems,numberOfItemsChecked}) => {
+const Header = () => {
+  const { items } = useItemsContext();
+
   return (
     <header>
-        <Logo/>
-        <Counter numberOfItemsChecked={numberOfItemsChecked} totalNumbersOfItems ={totalNumbersOfItems} />
+      <Logo />
+      <Counter
+        numberOfItemsChecked={items.filter((item) => item.packed).length}
+        totalNumbersOfItems={items.length}
+      />
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
